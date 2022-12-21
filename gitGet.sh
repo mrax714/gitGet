@@ -1,18 +1,25 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-    echo "waiting for the following arguments: username + max-page-number"
+    echo "waiting for the following arguments: username + max-page-number + ouput-directory"
     exit 1
 else
     name=$1
 fi
-mkdir /storage/0123-4567/gitrepos
-cd /storage/0123-4567/gitrepos
+
 if [ -z "$2" ]; then 
     max=2
 else
     max=$2
 fi
+
+if [ -z "$3" ]; then 
+    outdir="$PWD/gitrepos"
+else
+    outdir=$3
+fi
+mkdir "$outdir"
+cd "$outdir"
 
 cntx="users"
 page=1
